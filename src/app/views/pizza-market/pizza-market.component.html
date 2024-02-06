@@ -2,7 +2,9 @@
     <div class="pizza-container">
         <div class="description-container">
             <div class="image-container">
-                <img src={{data.img}}>
+                <a data-fancybox="pizza" href={{data.img}}>
+                    <img src={{data.img}} />
+                  </a>
             </div>
             <div class="title-container">
                 <h4>{{data.name}}</h4>

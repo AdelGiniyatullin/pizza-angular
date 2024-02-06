@@ -30,7 +30,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "@fancyapps/ui/dist/fancybox/fancybox.css"
             ],
             "scripts": ["node_modules/jquery/dist/jquery.min.js"],
             "server": "src/main.server.ts",

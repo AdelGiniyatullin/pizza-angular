@@ -4,7 +4,6 @@ import { OrderService } from '../../modules/order.service';
 import { Order } from '../../modules/order.types';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { OrderModalComponent } from './order-modal/order-modal.component';
-import $ from 'jquery';
 
 @Component({
   selector: 'app-pizza-order',
@@ -27,10 +26,14 @@ export class PizzaOrderComponent{
   
   checkoutForm = this.formBuilder.group({
     name: ['', 
-      Validators.pattern(/./),
+      Validators.required,
     ],
-    address: '',
-    phone: '',
+    address: ['', 
+    Validators.required,
+  ],
+    phone:['', 
+    Validators.compose([Validators.required, Validators.pattern(/^[0-9]+(?!.+-())/)]),
+  ],
   });
 
   onSubmit(): void {
@@ -41,7 +44,7 @@ export class PizzaOrderComponent{
         dialogConfig.panelClass = ['default-modal', 'order-modal'];
         dialogConfig.width = '400px';
         dialogConfig.height = '150px';
-        dialogConfig.position = {
+        dialogConfig.position = { 
           left: 'calc(50vw - 250px)',
           top: '-400px'
         }
