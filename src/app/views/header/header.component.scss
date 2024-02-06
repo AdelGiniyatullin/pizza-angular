@@ -1,0 +1,78 @@
+.container {
+  height: 100px;
+  filter: drop-shadow(0px 3px 7.5px rgba(152,152,152,0.2));
+  background-color: white;
+  display: block;
+  align-items: center;
+}
+
+.header-container {
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+  width: 1200px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap:15px;
+
+  @media (max-width: 1260px){
+    padding-left: 45px;
+  }
+}
+
+.text-logo{
+  font-size: 24px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ffc468;
+  font-weight: 800;
+  font-family: "Muller Black";
+  width: 83px;
+  height: 46px;
+}
+
+.text-nav{
+  text-decoration: none;
+  font-size: 16px;
+  letter-spacing: 0px;
+  color: #a46b00;
+  font-family: "Muller Regular";
+}
+.links-container{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-right: 200px;
+
+  @media (max-width: 1035px){
+      width: 100%;
+      margin-right: 0px;
+      margin-left: 200px;
+    }
+  @media (max-width: 730px){
+      display: none;
+    }
+
+}
+.links{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  z-index: 1;
+}
+
+.icon{
+  width: 68px;
+  height: 68px;
+}
+

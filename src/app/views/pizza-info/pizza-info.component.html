@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="info-container">
+        <div class="description-container">
+            <div class="title">
+                <h1 class="title-first">Самая вкусная пицца в мире</h1>
+                <h2 class="title-second">только в Pizza Cheff</h2>
+            </div>
+            <div class="advantages-container">
+                <div class="advantages" *ngFor="let data of data$ | async">
+                    <div class="pict">
+                        <img class="icon" src={{data.img}}/>
+                    </div>
+                    <div class="text-advantages">
+                        <h3>{{data.title}}</h3>
+                        <p>{{data.description}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="button-container">
+                <button>Выбрать пиццу</button>
+            </div>
+        </div>
+        <div class="image-container">
+            <img src="../../assets/images/pizza_big.png">
+        </div>
+    </div>
+</div>

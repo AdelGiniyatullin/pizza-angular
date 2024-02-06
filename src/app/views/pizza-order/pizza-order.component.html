@@ -1,0 +1,51 @@
+<div class="order">   
+    <div class="order-container">    
+        <div class="description-container">
+            <h3 class="title-text1">Хватит думать!</h3>
+            <h3 class="title-text2">Доставим заказ за 30 минут!</h3>
+            <p class="description-text">Мы гарантированно доставим вашу пиццу за 30 минут с момента оформления заказа. 
+                Если мы опоздаем даже на 1 минуту - 
+                вы получаете весь заказ бесплатно и 
+                ваучер на скидку на следующий заказ.
+                Мы гордимся нашим сервисом и сделаем всё, чтобы наш клиент был доволен и 
+                не остался голодный!
+            </p>
+        </div>
+        <div class="form-container-main"> 
+            <form class="form-container" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+                <div>
+                    <input
+                        id="name"
+                        onkeyup="this.value = this.value.replace('.','')"
+                        class="input-class"
+                        type="text"
+                        placeholder="Ваше имя"
+                        formControlName="name"
+                    />
+                </div>
+                <div>
+                    <input
+                        id="address"
+                        class="input-class"
+                        type="text"
+                        placeholder="Адрес доставки"
+                        formControlName="address"
+                    />
+                </div>
+                <div>
+                    <input
+                        id="phone"
+                        class="input-class"
+                        type="text"
+                        placeholder="Телефон"
+                        formControlName="phone"
+                    />
+                </div>
+                <button class="button" type="submit">Оформить заказ</button>
+            </form>
+        </div>
+        <div class="image-container">
+            <img src="../../../assets/images/pizzzzza.png">
+        </div>
+    </div>
+</div>

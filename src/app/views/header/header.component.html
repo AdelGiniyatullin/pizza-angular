@@ -1,0 +1,15 @@
+<div class="container">  
+    <div class="header-container" *ngIf="links$ | async as objLinks">
+      <div class="logo">
+        <img class="icon" src="../../assets/images/logo.png"/>
+        <div class="text">
+          <p class="text-logo">PIZZA CHEFF</p>
+        </div>
+      </div>
+      <div class="links-container">
+        <div class="links" *ngFor="let link of links$ | async">
+          <a href={{link.url}} class="text-nav">{{link.title}}</a>
+        </div>
+      </div>
+    </div>
+</div>

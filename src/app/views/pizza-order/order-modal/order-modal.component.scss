@@ -1,0 +1,19 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+
+h3 {
+    font-size: 35px;
+    line-height: 45px;
+    color: #66470d;
+    font-weight: 800;
+    font-family: "Muller Extra Bold";
+}
+
+// ::ng-deep .default-modal {
+//   mat-dialog-container {
+//       padding: 0;
+//   }
+// }

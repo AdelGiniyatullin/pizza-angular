@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+.default-modal {
+    
+    .close {
+      position: absolute;
+      right: 8px;
+      top: 8px;
+  
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+  
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
