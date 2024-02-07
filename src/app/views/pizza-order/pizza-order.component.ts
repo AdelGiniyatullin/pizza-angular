@@ -1,4 +1,5 @@
-import { Component, OnChanges } from '@angular/core';
+import { Component } from '@angular/core';
+import { CommonModule, NgClass, NgStyle } from '@angular/common';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { OrderService } from '../../modules/order.service';
 import { Order } from '../../modules/order.types';
@@ -8,11 +9,12 @@ import { OrderModalComponent } from './order-modal/order-modal.component';
 @Component({
   selector: 'app-pizza-order',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, NgStyle, NgClass],
   templateUrl: './pizza-order.component.html',
   styleUrl: './pizza-order.component.scss'
 })
 export class PizzaOrderComponent{
+[x: string]: any;
   constructor(private formBuilder: FormBuilder,
               private orderService: OrderService,
               private dialog: MatDialog
@@ -26,18 +28,19 @@ export class PizzaOrderComponent{
   
   checkoutForm = this.formBuilder.group({
     name: ['', 
-      Validators.required,
+    [Validators.required, Validators.pattern(/^[a-zA-Zа-яёА-ЯЁ ]+$/)],
     ],
     address: ['', 
     Validators.required,
   ],
     phone:['', 
-    Validators.compose([Validators.required, Validators.pattern(/^[0-9]+(?!.+-())/)]),
+    [Validators.required, Validators.pattern(/^[0-9+)(-)]/)],
   ],
   });
 
   onSubmit(): void {
     this.data = JSON.parse(JSON.stringify(this.checkoutForm.value));
+    console.log(this.checkoutForm.controls.name.invalid || this.checkoutForm.controls.name.dirty);
     this.orderService.putOrderData(this.data).subscribe({
       next:() => {
         const dialogConfig = new MatDialogConfig;
