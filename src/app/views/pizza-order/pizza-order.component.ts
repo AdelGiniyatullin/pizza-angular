@@ -80,7 +80,7 @@ export class PizzaOrderComponent{
   }
   
   onSubmit(): void {
-    
+    this.data = JSON.parse(JSON.stringify(this.checkoutForm.value));
     this.orderService.putOrderData(this.data).subscribe({
       next:() => {
         const dialogConfig = new MatDialogConfig;
