@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule, NgClass, NgStyle } from '@angular/common';
-import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { OrderService } from '../../modules/order.service';
 import { Order } from '../../modules/order.types';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -14,11 +14,18 @@ import { OrderModalComponent } from './order-modal/order-modal.component';
   styleUrl: './pizza-order.component.scss'
 })
 export class PizzaOrderComponent{
-[x: string]: any;
   constructor(private formBuilder: FormBuilder,
               private orderService: OrderService,
               private dialog: MatDialog
-    ){}
+    ){
+      this.isVisibleName = true;
+      this.isVisibleAddress = true;
+      this.isVisiblePhone = true;
+    }
+
+  isVisibleName: Boolean | undefined;
+  isVisibleAddress: Boolean | undefined;
+  isVisiblePhone: Boolean | undefined;
 
   data: Order = {
     name: '',
@@ -26,7 +33,7 @@ export class PizzaOrderComponent{
     phone: ''
   };
   
-  checkoutForm = this.formBuilder.group({
+  checkoutForm: FormGroup = this.formBuilder.group({
     name: ['', 
     [Validators.required, Validators.pattern(/^[a-zA-Zа-яёА-ЯЁ ]+$/)],
     ],
@@ -38,9 +45,42 @@ export class PizzaOrderComponent{
   ],
   });
 
+  onChangeName(){
+    if((this.checkoutForm.controls['name'].valid === false) && (this.checkoutForm.controls['name'].dirty === false)){
+      this.isVisibleName = true;
+    }
+    else if((this.checkoutForm.controls['name'].valid === true) && (this.checkoutForm.controls['name'].dirty === true)){
+      this.isVisibleName = true;
+    }
+    else {
+      this.isVisibleName = false;
+    }
+  }
+  onChangeAddress(){
+    if((this.checkoutForm.controls['address'].valid === false) && (this.checkoutForm.controls['address'].dirty === false)){
+      this.isVisibleAddress = true;
+    }
+    else if((this.checkoutForm.controls['address'].valid === true) && (this.checkoutForm.controls['address'].dirty === true)){
+      this.isVisibleAddress = true;
+    }
+    else {
+      this.isVisibleAddress = false;
+    }
+  }
+  onChangePhone(){
+    if((this.checkoutForm.controls['phone'].valid === false) && (this.checkoutForm.controls['phone'].dirty === false)){
+      this.isVisiblePhone = true;
+    }
+    else if((this.checkoutForm.controls['phone'].valid === true) && (this.checkoutForm.controls['phone'].dirty === true)){
+      this.isVisiblePhone = true;
+    }
+    else {
+      this.isVisiblePhone = false;
+    }
+  }
+  
   onSubmit(): void {
-    this.data = JSON.parse(JSON.stringify(this.checkoutForm.value));
-    console.log(this.checkoutForm.controls.name.invalid || this.checkoutForm.controls.name.dirty);
+    
     this.orderService.putOrderData(this.data).subscribe({
       next:() => {
         const dialogConfig = new MatDialogConfig;

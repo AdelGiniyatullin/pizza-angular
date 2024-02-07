@@ -21,9 +21,9 @@
                         type="text"
                         placeholder="Ваше имя"
                         formControlName="name"
+                        (ngModelChange)="onChangeName()"
                     />
-                    <label [style.display]="this.checkoutForm.controls.name.invalid || this.checkoutForm.controls.name.untouched ? 
-                                            'none' : 'block'" class="label-name">Неверное имя!</label>
+                    <label [style.display]="isVisibleName ? 'none' : 'block'" >Неверное имя!</label>
                 </div>
                 <div>
                     <input
@@ -32,8 +32,9 @@
                         type="text"
                         placeholder="Адрес доставки"
                         formControlName="address"
+                        (ngModelChange)="onChangeAddress()"
                     />
-                <label [style.display]="this.checkoutForm.controls.address.valid ? 'none' : 'block'" class="label-name">Неверный адрес!</label>
+                    <label [style.display]="isVisibleAddress ? 'none' : 'block'" >Неверный адрес!</label>
                 </div>
                 <div>
                     <input
@@ -42,11 +43,11 @@
                         type="text"
                         placeholder="Телефон"
                         formControlName="phone"
+                        (ngModelChange)="onChangePhone()"
                     />
-                    <label [style.display]="this.checkoutForm.controls.phone.valid ? 'none' : 'block'" class="label-name">Неверный номер телефона!</label>
+                    <label [style.display]="isVisiblePhone ? 'none' : 'block'" >Неверный номер телефона!</label>
                 </div>
-                <button class="button"  type="submit">Оформить заказ</button>
-                <!-- <button class="button" [disabled]="this.checkoutForm.invalid" type="submit">Оформить заказ</button> -->
+                <button class="button" [disabled]="this.checkoutForm.invalid" type="submit">Оформить заказ</button>
             </form>
         </div>
         <div class="image-container">
